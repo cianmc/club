@@ -1,0 +1,1 @@
+json.array! @club2s, partial: 'club2s/club2', as: :club2

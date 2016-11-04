@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Opposition:</strong>
+  <%= @fixture.opposition %>
+</p>
+
+<p>
+  <strong>Referee:</strong>
+  <%= @fixture.referee %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @fixture.date %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @fixture.time %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @fixture.venue.address %>
+</p>
+
+<h2>Result of Match</h2>
+	<%=form_for([@fixture, Comment.new]) do |f| %>
+	<%=f.text_area :content, :rows=>4, :cols=>40%>
+	<div class="actions">
+		<%=f.submit "Post a Comment"%>
+	</div>
+<% end %>	
+
+<%if @fixture.comments.empty? %>
+	<h3>Please type in the result of this fixture: </h3>
+<% end %>
+
+<%= link_to 'Edit', edit_fixture_path(@fixture) %> |
+<%= link_to 'Back', fixtures_path %>
