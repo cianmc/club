@@ -15,9 +15,13 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+   <div class="field">
+    <%= f.label :photo %><br>
+    <%= f.text_field :photo %>
+  </div>
   <div class="field">
     <%= f.label :phone_number %><br>
-    <%= f.number_field :phone_number %>
+    <%= f.telephone_field :phone_number %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
@@ -26,6 +30,10 @@
   <div class="field">
     <%= f.label :garda_vetted %><br>
     <%= f.check_box :garda_vetted %>
+  </div>
+  <div class="field">
+    <%= f.label :club2_id %><br>
+    <%= f.collection_select :club2_id, Club2.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -21,19 +21,31 @@
   </div>
   <div class="field">
     <%= f.label :phone_number %><br>
-    <%= f.number_field :phone_number %>
+    <%= f.telephone_field :phone_number %>
+  </div>
+    <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
   </div>
   <div class="field">
     <%= f.label :sex %><br>
-    <%= f.text_field :sex %>
+    <%= f.select :sex, ["Male", "Female"]%>
   </div>
   <div class="field">
     <%= f.label :membership %><br>
-    <%= f.text_field :membership %>
+    <%= f.select :membership, ["Adult", "Juvenile", "Student"] %>
   </div>
   <div class="field">
-    <%= f.label :password_digest %><br>
-    <%= f.password_field :password_digest %>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :club2_id %><br>
+    <%= f.collection_select :club2_id, Club2.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :team_id %><br>

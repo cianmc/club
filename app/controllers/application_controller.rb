@@ -8,14 +8,23 @@ class ApplicationController < ActionController::Base
   def authorise
 	 unless signed_in?
 		store_location
-		redirect_to login_path,:notice => "please sign in to access this page. "
+		redirect_to login_path,:notice => "please sign in as a member to access this page. "
 	end
    end
-
+   
+   def secongauthorise
+		unless secondsigned_in?
+			if session[:user_id].nil?
+				return
+			else
+				@secondcurrent_user = User.find_by_id(session[:user_id])
+			end
+		end	
+	end
+		
    private
 	def store_location
 		session[:return_to] = request.fullpath
 	end	
-	
 end
 

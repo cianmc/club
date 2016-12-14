@@ -8,9 +8,15 @@
 </head>
 <body>
 <div id ="banner">
-	<%=image_tag("sports .jpg", :size=> "100x50") %>
+	<%=image_tag("GAA.svg.png", :size=> "100x50", :color=> "white") %>
 	<%= "Sports Club" %>
 </div>
+
+<% flash.each do |key, value| %>
+	<div class="flash <%= key %>">
+		<%= value %>
+	</div>
+	<% end %>
 
 <div id ="nav">
 	<ul>
@@ -24,9 +30,15 @@
 		<%if !signed_in? %>
 			<li><%= link_to "Sign In", login_path%></li>
 		<% else %>
-			<li>Signed in as<%= @current_user.name %></li>
+			<li>Signed in as<%= @current_member.name %></li>
 			<li><%=link_to "Sign Out", logout_path %></li>]
 		<% end %>	
+		<%if !secondsigned_in? %>
+			<li><%= link_to "Admin Sign In", secondlogin_path%></li>
+		<% else %>
+			<li>Signed in as<%= @secondcurrent_user.name %></li>
+			<li><%=link_to "Sign Out", secondlogout_path %></li>]
+		<% end %>
 	</ul>
 </div>	
 

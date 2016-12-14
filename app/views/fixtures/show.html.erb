@@ -31,10 +31,13 @@
 	<div class="actions">
 		<%=f.submit "Post a Comment"%>
 	</div>
-<% end %>	
+<% end %>
 
-<%if @fixture.comments.empty? %>
-	<h3>Please type in the result of this fixture: </h3>
+<h2>Results from other members:</h2>
+<%@fixture.comments.reverse.each do |comment| %>
+	<p><%=comment.content%>
+	Posted <%= time_ago_in_words(comment.created_at)%> ago by
+	<%=comment.member.name%></p>
 <% end %>
 
 <%= link_to 'Edit', edit_fixture_path(@fixture) %> |

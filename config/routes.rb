@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
- 
+
   resources :fixtures do
 	resources :comments
 	end	
 
-controller :session do
-	get 'login' =>:new
-	post 'login' =>:create
-	get 'logout' =>:destroy
-	delete 'logout' =>:destroy
-end	
+controller :sessions do
+	get 'login' => :new
+	post 'login' => :create
+	get 'logout' => :destroy
+	delete 'logout' => :destroy
+	get 'secondlogin' => :secondnew
+	post 'secondlogin' => :secondcreate
+	get 'secondlogout' => :seconddestroy
+	delete 'secondlogout' => :seconddestroy
+ end
 
   resources :users
 
@@ -29,6 +33,8 @@ end
 
   resources :venues
 
+  
+  get 'search', :to=>'venues#search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

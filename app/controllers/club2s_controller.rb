@@ -1,6 +1,7 @@
 class Club2sController < ApplicationController
-  before_action :set_club2, only: [:show]
-  before_action :authorise, only: [:new, :show, :edit, :update, :destroy]
+  before_action :set_club2, only: [:show, :edit, :update, :destroy]
+  before_action :authorise, only: [ ] #For Member
+  before_action :secondauthorise, only: [:new, :edit, :update, :destroy] #For User AKA Admin
 
   # GET /club2s
   # GET /club2s.json

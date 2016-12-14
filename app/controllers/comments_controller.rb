@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 	def create
 		@fixture = Fixture.find params[:fixture_id]
 		@comment = @fixture.comments.new(comment_params)
-		@comment.user_id = @current_user.id
+		@comment.member_id = @current_member.id
 		@comment.save
 		
 		respond_to do |format|
@@ -14,8 +14,7 @@ class CommentsController < ApplicationController
 	
 	private
 	def comment_params
-		params.require(:comment).permit(:content, :fixture_id, :user_id)
+		params.require(:comment).permit(:content, :fixture_id, :member_id)
 	end
 end
 
-end

@@ -16,10 +16,11 @@
       <th>Name</th>
       <th>Dob</th>
       <th>Phone number</th>
+	  <th>Email</th>
       <th>Sex</th>
       <th>Membership</th>
-      <th>Password digest</th>
       <th>Team</th>
+	  <th>Club</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -29,11 +30,12 @@
       <tr>
         <td><%= member.name %></td>
         <td><%= member.dob %></td>
-        <td><%= member.phone_number %></td>
+        <td>0<%= member.phone_number %></td>
+		<td><%= member.email %></td>
         <td><%= member.sex %></td>
         <td><%= member.membership %></td>
-        <td><%= member.password_digest %></td>
         <td><%= member.team.name %></td>
+		<td><%= member.club2.name %></td>
         <td><%= link_to 'Show', member %></td>
         <td><%= link_to 'Edit', edit_member_path(member) %></td>
         <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>

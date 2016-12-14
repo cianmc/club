@@ -1,9 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Pitch:</strong>
+  <%= @venue.pitch %>
+</p>
+
+<p>
   <strong>Address:</strong>
   <%= @venue.address %>
 </p>
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@venue.latitude}%2C#{@venue.longitude}" %>
+
+<h3>Distance to Croke Park (miles) </h3>
+	<%=number_to_human(@venue.distance_to("Croke Park Jones Road Dublin")) %>
 
 <%= link_to 'Edit', edit_venue_path(@venue) %> |
 <%= link_to 'Back', venues_path %>

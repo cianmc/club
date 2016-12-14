@@ -1,12 +1,24 @@
 class VenuesController < ApplicationController
-  before_action :set_venue, only: [:show]
-  before_action :authorise, only: [:new, :show, :edit, :update, :destroy]
+  before_action :set_venue, only: [:show, :edit, :update, :destroy]
+  before_action :authorise, only: [ ] #For Member
+  before_action :secondauthorise, only: [:new, :edit, :update, :destroy] #For User AKA Admin
 
   # GET /venues
   # GET /venues.json
   def index
     @venues = Venue.all
   end
+  
+  def search
+		@venues = Venue.search params[:query]
+		unless @venues.empty?
+			render 'index'
+		else
+			flash[:notice] = 'No record mataches that search'
+			@venues = Venue.all
+			render 'index'
+		end
+	end	
 
   # GET /venues/1
   # GET /venues/1.json
@@ -70,6 +82,6 @@ class VenuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def venue_params
-      params.require(:venue).permit(:address)
+      params.require(:venue).permit(:address, :latitude, :longitude, :pitch)
     end
 end

@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 gem 'coffee-script-source','1.8.0' 
+gem 'geocoder'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'

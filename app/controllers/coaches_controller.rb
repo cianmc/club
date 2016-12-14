@@ -1,13 +1,14 @@
 class CoachesController < ApplicationController
-  before_action :set_coach, only: [:show]
-  before_action :authorise, only: [:new, :show, :edit, :update, :destroy]
+  before_action :set_coach, only: [:show, :edit, :update, :destroy]
+  before_action :authorise, only: [ ] #For Member
+  before_action :secondauthorise, only: [:new, :edit, :update, :destroy] #For User AKA Admin
 
   # GET /coaches
   # GET /coaches.json
   def index
     @coaches = Coach.all
   end
-
+  
   # GET /coaches/1
   # GET /coaches/1.json
   def show
@@ -70,6 +71,6 @@ class CoachesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coach_params
-      params.require(:coach).permit(:name, :phone_number, :email, :garda_vetted)
+      params.require(:coach).permit(:name, :phone_number, :photo, :email, :garda_vetted)
     end
 end

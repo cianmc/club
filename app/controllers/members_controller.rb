@@ -1,6 +1,7 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show]
-  before_action :authorise, only: [:new, :show, :edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :authorise, only: [:edit, :update] #For member
+  before_action :secondauthorise, only: [:destroy] #For User AKA Admin
 
   # GET /members
   # GET /members.json
@@ -29,6 +30,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
+		Membermailer.welcome(@member).deliver
         format.html { redirect_to @member, notice: 'Member was successfully created.' }
         format.json { render :show, status: :created, location: @member }
       else
@@ -70,6 +72,6 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:name, :dob, :phone_number, :sex, :membership, :password_digest, :team_id)
+      params.require(:member).permit(:name, :dob, :phone_number, :email, :sex, :membership, :password, :password_confrimation, :team_id)
     end
 end

@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :dob %><br>
-    <%= f.date_select :dob %>
+    <%= f.date_field :dob %>
   </div>
   <div class="field">
     <%= f.label :sex %><br>
-    <%= f.text_field :sex %>
+    <%= f.select :sex, ["Male", "Female"] %>
   </div>
   <div class="field">
     <%= f.label :password %><br>

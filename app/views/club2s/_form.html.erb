@@ -19,14 +19,7 @@
     <%= f.label :address %><br>
     <%= f.text_field :address %>
   </div>
-  <div class="field">
-    <%= f.label :member_id %><br>
-    <%= f.collection_select :member_id, Member.all, :id, :name %>
-  </div>
-  <div class="field">
-    <%= f.label :coach_id %><br>
-    <%= f.collection_select :coach_id, Coach.all, :id, :name %>
-  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

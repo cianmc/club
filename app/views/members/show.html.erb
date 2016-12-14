@@ -7,12 +7,17 @@
 
 <p>
   <strong>Dob:</strong>
-  <%= @member.dob %>
+  <%= age(@member.dob) %>
 </p>
 
 <p>
   <strong>Phone number:</strong>
   <%= @member.phone_number %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @member.email %>
 </p>
 
 <p>
@@ -26,13 +31,13 @@
 </p>
 
 <p>
-  <strong>Password digest:</strong>
-  <%= @member.password_digest %>
+  <strong>Team:</strong>
+  <%= @member.team.name %>
 </p>
 
 <p>
-  <strong>Team:</strong>
-  <%= @member.team.name %>
+  <strong>Club:</strong>
+  <%= @member.club2.name %>
 </p>
 
 <%= link_to 'Edit', edit_member_path(@member) %> |
